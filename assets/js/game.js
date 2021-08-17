@@ -22,7 +22,7 @@ var figthOrSkip = function() {
     }
     
     promptFight = promptFight.toLowerCase();
-    
+
     // if player picks "skip" confirm and then stop the loop
     if (promptFight === "skip") {
         // confirm player wants to skip
@@ -38,8 +38,15 @@ var figthOrSkip = function() {
             return true;
         }
     }
-    return false;
-}
+    else if (promptFight === "fight") {
+        return false;
+    }
+    else {
+        window.alert("You need to provide a valid answer! Please try again.")
+        return figthOrSkip();
+    }
+    // return false;
+};
 
 // fight function
 var fight = function(enemy) {
