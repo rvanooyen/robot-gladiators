@@ -82,15 +82,12 @@ var startGame = function() {
     for (var i = 0; i < enemyInfo.length; i++) {
         if (playerInfo.health > 0) {
             window.alert("Welcome to Robot Gladiators! Round " + (i + 1) );
-            
+                        
             // pick new enemy to fight based on the index of the enemy.names array
             var pickedEnemyObj = enemyInfo[i];
     
             // reset enemy.health before starting new fight
             pickedEnemyObj.health = randomNumber(40, 60);
-    
-            //use debugger to pause script from running and check what's going on at that moment in the code
-            // debugger;
     
             // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name pararmeter
             fight(pickedEnemyObj);
@@ -157,21 +154,27 @@ var shop = function() {
         case "LEAVE": // new case
         case "leave":
             window.alert("Leaving the store.");
-
-            // do nothing, so function will end
             break;
         default:
             window.alert("You did not pick a valid option. Try again.");
-
-            // call shop() again to force player to pick a valid option
             shop();
             break;
     }
 };
 
+// function to get player name
+var getPlayerName = function() {
+    var name = "";
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+    console.log("Your robot's name is " + name);
+    return name;
+};
+
 // player variables
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
